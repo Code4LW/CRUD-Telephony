@@ -1,9 +1,12 @@
 package com.example.cgmzswnvfqvoqrnovnla.controller;
 
 import com.example.cgmzswnvfqvoqrnovnla.DTO.ContactPgDTO;
+import com.example.cgmzswnvfqvoqrnovnla.FIlter.Filter;
 import com.example.cgmzswnvfqvoqrnovnla.model.ContactPG;
 import com.example.cgmzswnvfqvoqrnovnla.service.ContactServicePG;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -21,6 +24,11 @@ public class ContactConrollerPG {
         return contactService.getContacts();
 
     }
+    @GetMapping("/all/paged/{limit}/{offset}")
+    public List<ContactPgDTO> getAllPaged(@PathVariable int limit, @PathVariable int offset){
+        Filter filter = new Filter(limit, offset);
+        return contactService.getContacts(filter);
+    }
 
     @GetMapping("/id/{id}")
     public ContactPgDTO getContactById(@PathVariable Long id) {
@@ -37,7 +45,7 @@ public class ContactConrollerPG {
                 contactService.createContact(contact);
                 return ResponseEntity.ok().body("The contact is created and saved");
             }catch (RuntimeException exception){
-                return ResponseEntity.internalServerError().body("The number is already used!");// на случай если у создаваемого контакта есть уже использованный номер
+                return ResponseEntity.internalServerError().body("The number is already used!");
             }
 
     }

@@ -2,12 +2,14 @@ package com.example.cgmzswnvfqvoqrnovnla.service;
 
 import com.example.cgmzswnvfqvoqrnovnla.DTO.ContactPgDTO;
 import com.example.cgmzswnvfqvoqrnovnla.DTOMapper.ContactDTOMapperPG;
+import com.example.cgmzswnvfqvoqrnovnla.FIlter.Filter;
 import com.example.cgmzswnvfqvoqrnovnla.model.ContactPG;
 import com.example.cgmzswnvfqvoqrnovnla.repository.ContactRepositoryPG;
 import lombok.*;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import java.util.stream.Collectors;
@@ -41,8 +43,13 @@ public class ContactServicePG {
     }
 
     public List<ContactPgDTO> getContacts(){
-        List<ContactPgDTO> contacts = contactRepositoryPG.findAll().stream().map(contactDTOMapperPG).collect(Collectors.toList());
-        return contacts;
+         return contactRepositoryPG.findAll().stream().map(contactDTOMapperPG).collect(Collectors.toList());
+
+    }
+    public List<ContactPgDTO> getContacts(Filter filter){
+        Pageable pageable = PageRequest.of(filter.getOffset(), filter.getLimit());
+        return contactRepositoryPG.getAll(filter, pageable).stream().map(contactDTOMapperPG).collect(Collectors.toList());
+
     }
     public ContactPgDTO getById(Long id){
         return contactDTOMapperPG.apply(
