@@ -1,5 +1,6 @@
 package com.example.cgmzswnvfqvoqrnovnla.controller;
 
+import com.example.cgmzswnvfqvoqrnovnla.DTO.ContactPgDTO;
 import com.example.cgmzswnvfqvoqrnovnla.model.ContactPG;
 import com.example.cgmzswnvfqvoqrnovnla.service.ContactServicePG;
 import lombok.RequiredArgsConstructor;
@@ -15,17 +16,17 @@ public class ContactConrollerPG {
     private final ContactServicePG contactService;
 
     @GetMapping("/all")
-    public List<ContactPG> getAll() {
+    public List<ContactPgDTO> getAll() {
         return contactService.getContacts();
 
     }
 
     @GetMapping("/id/{id}")
-    public ContactPG getContactById(@PathVariable Long id) {
+    public ContactPgDTO getContactById(@PathVariable Long id) {
         return contactService.getById(id);
     }
     @GetMapping("/number/{phoneNumber}")
-    public ContactPG getContactById(@PathVariable String phoneNumber) {
+    public ContactPgDTO getContactById(@PathVariable String phoneNumber) {
         return contactService.getByPhoneNumber(phoneNumber);
     }
 
@@ -50,6 +51,11 @@ public class ContactConrollerPG {
         return ResponseEntity.ok().body("The contact is updated");
     }
 
+    @DeleteMapping("/delete/all")
+    public ResponseEntity<String> deleteAll(){
+        contactService.deleteAll();
+        return ResponseEntity.ok().body("ALl entities are deleted");
+    }
 
     @DeleteMapping("/delete/id/{id}")
     public ResponseEntity<String> deleteContactById(@PathVariable Long id) {

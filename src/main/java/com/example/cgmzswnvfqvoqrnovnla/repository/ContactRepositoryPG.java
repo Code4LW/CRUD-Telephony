@@ -6,4 +6,5 @@ import org.springframework.data.jpa.repository.Query;
 
 
 public interface ContactRepositoryPG extends JpaRepository<ContactPG, Long> {
+    ContactPG findByNumbers(String phoneNumber);
 }
