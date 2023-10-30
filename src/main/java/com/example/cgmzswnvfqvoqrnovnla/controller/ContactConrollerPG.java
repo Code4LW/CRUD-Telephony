@@ -11,6 +11,7 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
+@RequestMapping("/PG")
 public class ContactConrollerPG {
 
     private final ContactServicePG contactService;
@@ -31,7 +32,7 @@ public class ContactConrollerPG {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<String> saveContact(@RequestBody ContactPG contact) {
+    public ResponseEntity<String> addContact(@RequestBody ContactPG contact) {
             try {
                 contactService.createContact(contact);
                 return ResponseEntity.ok().body("The contact is created and saved");
