@@ -3,10 +3,10 @@ package com.example.cgmzswnvfqvoqrnovnla.controller;
 import com.example.cgmzswnvfqvoqrnovnla.model.ContactPG;
 import com.example.cgmzswnvfqvoqrnovnla.service.ContactServicePG;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 @RequiredArgsConstructor
 @RestController
@@ -30,29 +30,37 @@ public class ContactConrollerPG {
     }
 
     @PostMapping("/create")
-    public void saveContact(@RequestBody ContactPG contact) {
-        ContactPG cont = contactService.getContacts().stream().filter(contactPG -> contactPG.getNumbers().equals(contact.getNumbers())).collect(Collectors.toList()).get(0);
-        if(contactService.getContacts().contains(cont)) throw new RuntimeException("The contuct with similar number already exist!");
+    public ResponseEntity<String> saveContact(@RequestBody ContactPG contact) {
+            try {
+                contactService.createContact(contact);
+                return ResponseEntity.ok().body("The contact is created and saved");
+            }catch (RuntimeException exception){
+                return ResponseEntity.internalServerError().body("The number is already used!");// на случай если у создаваемого контакта есть уже использованный номер
+            }
 
     }
     @PutMapping("/update/id/{id}")
-        public void updateContactById(@PathVariable Long id, @RequestBody ContactPG contact){
+        public ResponseEntity<String> updateContactById(@PathVariable Long id, @RequestBody ContactPG contact){
             contactService.updateContact(id, contact);
+            return ResponseEntity.ok().body("The contact is updated");
         }
     @PutMapping("/update/number/{phoneNumber}")
-    public void updateContactById(@PathVariable String phoneNumber, @RequestBody ContactPG contact){
+    public ResponseEntity<String> updateContactById(@PathVariable String phoneNumber, @RequestBody ContactPG contact){
         contactService.updateContact(phoneNumber, contact);
+        return ResponseEntity.ok().body("The contact is updated");
     }
 
 
     @DeleteMapping("/delete/id/{id}")
-    public void deleteContactById(@PathVariable Long id) {
+    public ResponseEntity<String> deleteContactById(@PathVariable Long id) {
         contactService.deleteById(id);
+        return ResponseEntity.ok().body("The contact is deleted");
     }
 
     @DeleteMapping("/delete/number/{phonenumber}")
-    public void deleteContactByPhoneNumber(@PathVariable String phonenumber) {
+    public ResponseEntity<String> deleteContactByPhoneNumber(@PathVariable String phonenumber) {
         contactService.deleteByPhoneNumber(phonenumber);
+        return ResponseEntity.ok("The contact is deleted");
     }
 
 }

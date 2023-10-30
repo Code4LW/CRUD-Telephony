@@ -27,9 +27,9 @@ public class ContactPG {
     private String name;
     @Column(name = "date_of_birth")
     private LocalDate birthdate;
-    @Column(name = "phone_number", unique = true)
+    @Column(name = "phone_number", unique = true) // данный параметр будет являться уникальным, так как у двух контактов не может быть одного номера
     @ElementCollection(fetch=EAGER)
-    private Set<String> numbers = new HashSet<>();
+    private Set<String> numbers = new HashSet<>();//использован Set, чтобы два номера не повторялись
     @Column(name = "date_of_creation")
     private LocalDate creationDate;
 

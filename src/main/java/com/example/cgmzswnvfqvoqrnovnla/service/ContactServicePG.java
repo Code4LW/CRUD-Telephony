@@ -3,12 +3,11 @@ package com.example.cgmzswnvfqvoqrnovnla.service;
 import com.example.cgmzswnvfqvoqrnovnla.model.ContactPG;
 import com.example.cgmzswnvfqvoqrnovnla.repository.ContactRepositoryPG;
 import lombok.*;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor

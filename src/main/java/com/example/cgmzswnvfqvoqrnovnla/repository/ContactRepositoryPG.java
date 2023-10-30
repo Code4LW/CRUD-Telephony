@@ -6,5 +6,4 @@ import org.springframework.data.jpa.repository.Query;
 
 
 public interface ContactRepositoryPG extends JpaRepository<ContactPG, Long> {
-    void deleteByNumbersIsContaining(String phoneNumber);
 }
