@@ -6,6 +6,7 @@ import com.example.cgmzswnvfqvoqrnovnla.FIlter.Filter;
 import com.example.cgmzswnvfqvoqrnovnla.model.ContactPG;
 import com.example.cgmzswnvfqvoqrnovnla.repository.ContactRepositoryPG;
 import lombok.*;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -46,9 +47,15 @@ public class ContactServicePG {
          return contactRepositoryPG.findAll().stream().map(contactDTOMapperPG).collect(Collectors.toList());
 
     }
-    public List<ContactPgDTO> getContacts(Filter filter){
-        Pageable pageable = PageRequest.of(filter.getOffset(), filter.getLimit());
-        return contactRepositoryPG.getAll(filter, pageable).stream().map(contactDTOMapperPG).collect(Collectors.toList());
+    public Page<ContactPgDTO> getContacts(Filter filter){
+        int offset = (filter.getOffset()-1) * filter.getLimit();
+        if(filter.getOffset() == 1) {
+            filter.setOffset(0);
+            offset = filter.getOffset() * filter.getLimit();
+        }
+
+        Page<ContactPG> page = contactRepositoryPG.findAll(PageRequest.of(offset, filter.getLimit()));
+        return page.map(contactDTOMapperPG);
 
     }
     public ContactPgDTO getById(Long id){

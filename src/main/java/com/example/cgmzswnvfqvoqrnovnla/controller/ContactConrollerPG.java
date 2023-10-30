@@ -5,8 +5,10 @@ import com.example.cgmzswnvfqvoqrnovnla.FIlter.Filter;
 import com.example.cgmzswnvfqvoqrnovnla.model.ContactPG;
 import com.example.cgmzswnvfqvoqrnovnla.service.ContactServicePG;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -25,9 +27,10 @@ public class ContactConrollerPG {
 
     }
     @GetMapping("/all/paged/{limit}/{offset}")
-    public List<ContactPgDTO> getAllPaged(@PathVariable int limit, @PathVariable int offset){
+    public ResponseEntity<List<ContactPgDTO>> getAllPaged(@PathVariable int limit, @PathVariable int offset){
         Filter filter = new Filter(limit, offset);
-        return contactService.getContacts(filter);
+        Page<ContactPgDTO> allPaged = contactService.getContacts(filter);
+        return new ResponseEntity(allPaged.getContent(), HttpStatus.OK);
     }
 
     @GetMapping("/id/{id}")
