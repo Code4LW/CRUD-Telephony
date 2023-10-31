@@ -3,10 +3,13 @@ package com.example.cgmzswnvfqvoqrnovnla.service;
 import com.example.cgmzswnvfqvoqrnovnla.DTO.ContactMongoDTO;
 import com.example.cgmzswnvfqvoqrnovnla.DTO.ContactPgDTO;
 import com.example.cgmzswnvfqvoqrnovnla.DTOMapper.ContactDTOMapperMongo;
+import com.example.cgmzswnvfqvoqrnovnla.FIlter.Filter;
 import com.example.cgmzswnvfqvoqrnovnla.model.ContactMongo;
 import com.example.cgmzswnvfqvoqrnovnla.model.ContactPG;
 import com.example.cgmzswnvfqvoqrnovnla.repository.ContactRepositoryMongo;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -40,6 +43,15 @@ public class ContactServiceMongo {
     }
     public List<ContactMongoDTO> getContacts(){
         return contactRepositoryMongo.findAll().stream().map(contactDTOMapperMongo).collect(Collectors.toList());
+    }
+    public Page<ContactMongoDTO> getContacts(Filter filter){
+        int offset = (filter.getOffset()-1) * filter.getLimit();
+        if(filter.getOffset() == 1) {
+            filter.setOffset(0);
+            offset = filter.getOffset() * filter.getLimit();
+        }
+        Page<ContactMongo> page = contactRepositoryMongo.findAll(PageRequest.of(offset, filter.getLimit()));
+        return page.map(contactDTOMapperMongo);
     }
     public ContactMongoDTO getById(Long id){
         return contactDTOMapperMongo.apply(

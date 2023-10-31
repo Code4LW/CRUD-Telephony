@@ -11,8 +11,13 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
@@ -21,7 +26,6 @@ import java.util.stream.Collectors;
 public class ContactServicePG {
     private final ContactRepositoryPG contactRepositoryPG;
     private final ContactDTOMapperPG contactDTOMapperPG;
-
     public void createContact(ContactPG contact){
         contactRepositoryPG.save(contact);
     }
@@ -49,11 +53,6 @@ public class ContactServicePG {
     }
     public Page<ContactPgDTO> getContacts(Filter filter){
         int offset = (filter.getOffset()-1) * filter.getLimit();
-        if(filter.getOffset() == 1) {
-            filter.setOffset(0);
-            offset = filter.getOffset() * filter.getLimit();
-        }
-
         Page<ContactPG> page = contactRepositoryPG.findAll(PageRequest.of(offset, filter.getLimit()));
         return page.map(contactDTOMapperPG);
 

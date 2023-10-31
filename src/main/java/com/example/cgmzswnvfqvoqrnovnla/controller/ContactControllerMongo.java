@@ -1,10 +1,14 @@
 package com.example.cgmzswnvfqvoqrnovnla.controller;
 
 import com.example.cgmzswnvfqvoqrnovnla.DTO.ContactMongoDTO;
+import com.example.cgmzswnvfqvoqrnovnla.DTO.ContactPgDTO;
+import com.example.cgmzswnvfqvoqrnovnla.FIlter.Filter;
 import com.example.cgmzswnvfqvoqrnovnla.model.ContactMongo;
 import com.example.cgmzswnvfqvoqrnovnla.model.ContactPG;
 import com.example.cgmzswnvfqvoqrnovnla.service.ContactServiceMongo;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,7 +25,12 @@ public class ContactControllerMongo {
     @GetMapping("/all")
     public List<ContactMongoDTO> getAll() {
         return contactService.getContacts();
-
+    }
+    @GetMapping("/all/paged/{limit}/{offset}")
+    public ResponseEntity<List<ContactMongoDTO>> getAllPaged(@PathVariable int limit, @PathVariable int offset){
+        Filter filter = new Filter(limit, offset);
+        Page<ContactMongoDTO> allPaged = contactService.getContacts(filter);
+        return new ResponseEntity(allPaged.getContent(), HttpStatus.OK);
     }
 
     @GetMapping("/id/{id}")
