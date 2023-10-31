@@ -1,0 +1,454 @@
+{
+	"info": {
+		"_postman_id": "6ddedf54-c622-4bb5-b60b-c5b94888881b",
+		"name": "New Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "30833159"
+	},
+	"item": [
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": [
+				{
+					"name": "PG_Get_All_request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/PG/all"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 31 Oct 2023 05:18:09 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 4,\n        \"name\": \"John Smith\",\n        \"birthdate\": \"2000-10-18\",\n        \"numbers\": [\n            \"+7444555666\",\n            \"+7777888999\"\n        ],\n        \"creationDate\": \"2023-10-31\"\n    },\n    {\n        \"id\": 5,\n        \"name\": \"Jane Doe\",\n        \"birthdate\": \"2001-01-30\",\n        \"numbers\": [\n            \"+7111222333\",\n            \"+7147147147\"\n        ],\n        \"creationDate\": \"2023-10-31\"\n    },\n    {\n        \"id\": 6,\n        \"name\": \"Sam Smith\",\n        \"birthdate\": \"2005-05-05\",\n        \"numbers\": [\n            \"+7258258258\",\n            \"+7369369369\"\n        ],\n        \"creationDate\": \"2023-10-31\"\n    }\n]"
+				},
+				{
+					"name": "Mongo_Get_All_request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/Mongo/all"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 31 Oct 2023 05:19:07 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 1,\n        \"name\": \"John Smith\",\n        \"birthdate\": \"2000-10-18\",\n        \"numbers\": [\n            \"+7444555666\",\n            \"+7777888999\"\n        ],\n        \"creationDate\": \"2023-10-31\"\n    },\n    {\n        \"id\": 2,\n        \"name\": \"Jane Doe\",\n        \"birthdate\": \"2001-01-30\",\n        \"numbers\": [\n            \"+7111222333\",\n            \"+7147147147\"\n        ],\n        \"creationDate\": \"2023-10-31\"\n    },\n    {\n        \"id\": 3,\n        \"name\": \"Sam Smith\",\n        \"birthdate\": \"2005-05-05\",\n        \"numbers\": [\n            \"+7258258258\",\n            \"+7369369369\"\n        ],\n        \"creationDate\": \"2023-10-31\"\n    }\n]"
+				},
+				{
+					"name": "GetByID_Posgres",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/PG/id/4"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 31 Oct 2023 05:21:40 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 4,\n    \"name\": \"John Smith\",\n    \"birthdate\": \"2000-10-18\",\n    \"numbers\": [\n        \"+7444555666\",\n        \"+7777888999\"\n    ],\n    \"creationDate\": \"2023-10-31\"\n}"
+				},
+				{
+					"name": "GetByID_Mongo",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/Mongo/id/2"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 31 Oct 2023 05:22:58 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 2,\n    \"name\": \"Jane Doe\",\n    \"birthdate\": \"2001-01-30\",\n    \"numbers\": [\n        \"+7111222333\",\n        \"+7147147147\"\n    ],\n    \"creationDate\": \"2023-10-31\"\n}"
+				},
+				{
+					"name": "DeleteByID_PG",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8080/PG/delete/id/4"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain;charset=UTF-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "22"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 31 Oct 2023 05:24:38 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "The contact is deleted"
+				},
+				{
+					"name": "DeleteByID_Mongo",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8080/Mongo/delete/id/2"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain;charset=UTF-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "22"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 31 Oct 2023 05:25:16 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "The contact is deleted"
+				},
+				{
+					"name": "AddingContact",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"id\": 4,\r\n        \"name\": \"John Smith\",\r\n        \"birthdate\": \"2000-10-18\",\r\n        \"numbers\": [\r\n            \"+7444555666\",\r\n            \"+7777888999\"\r\n        ],\r\n        \"creationDate\": \"2023-10-31\"\r\n    },"
+						},
+						"url": "http://localhost:8080/PG/create"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain;charset=UTF-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "32"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 31 Oct 2023 05:32:12 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "The contact is created and saved"
+				},
+				{
+					"name": "UpdatingByIDMongo",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"id\": 1,\r\n        \"name\": \"John Smith is updated\",\r\n        \"birthdate\": \"2000-10-18\",\r\n        \"numbers\": [\r\n            \"+7444555666\",\r\n            \"+7777888999\"\r\n        ],\r\n        \"creationDate\": \"2023-10-31\"\r\n    }"
+						},
+						"url": "http://localhost:8080/Mongo/update/id/1"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain;charset=UTF-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "22"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 31 Oct 2023 05:33:58 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "The contact is updated"
+				},
+				{
+					"name": "UpdatingByPhoneNumberPostgres",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"id\": 5,\r\n        \"name\": \"Jane Doe is updated by number\",\r\n        \"birthdate\": \"2001-01-30\",\r\n        \"numbers\": [\r\n            \"+7111222333\",\r\n            \"+7147147147\"\r\n        ],\r\n        \"creationDate\": \"2023-10-31\"\r\n    }"
+						},
+						"url": "http://localhost:8080/PG/update/number/+7147147147"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain;charset=UTF-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "22"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 31 Oct 2023 05:35:43 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "The contact is updated"
+				},
+				{
+					"name": "DeletetingAllInPostgres",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"id\": 5,\r\n        \"name\": \"Jane Doe is updated by number\",\r\n        \"birthdate\": \"2001-01-30\",\r\n        \"numbers\": [\r\n            \"+7111222333\",\r\n            \"+7147147147\"\r\n        ],\r\n        \"creationDate\": \"2023-10-31\"\r\n    }"
+						},
+						"url": "http://localhost:8080/PG/delete/all"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain;charset=UTF-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "24"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 31 Oct 2023 05:36:47 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "ALl entities are deleted"
+				},
+				{
+					"name": "DeletingAllInMongo",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"id\": 5,\r\n        \"name\": \"Jane Doe is updated by number\",\r\n        \"birthdate\": \"2001-01-30\",\r\n        \"numbers\": [\r\n            \"+7111222333\",\r\n            \"+7147147147\"\r\n        ],\r\n        \"creationDate\": \"2023-10-31\"\r\n    }"
+						},
+						"url": "http://localhost:8080/Mongo/delete/all"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain;charset=UTF-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "24"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 31 Oct 2023 05:37:13 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "ALl entities are deleted"
+				}
+			]
+		}
+	]
+}
