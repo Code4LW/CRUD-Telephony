@@ -1,4 +1,4 @@
-# cgmzswnvfqvoqrnovnla
+# Online Telephony - SpringBoot Web Application
 Данный проект реализовывает CRUD операции между двумя базами данных PostgreSQL(Версия) и MongoDB(Версия 7). Проект написан на Java версии 11 собран с помощью Gradle и использует Spting Framework.
 
 Для полноценной работы с данным приложением необходимо следующее: Наличие IntelijIDE, Git, PostgreSQL, MongoDB и Postman. Инструкции по загрузке и установке всех приложении указаны в документации в официальных сайтах
